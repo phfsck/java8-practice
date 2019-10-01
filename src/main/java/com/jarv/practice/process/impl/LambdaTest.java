@@ -21,6 +21,7 @@ public class LambdaTest implements TestInf {
 		long lStartTime = System.currentTimeMillis();
 		
 		test1();
+		test2();
 		
 		long lEndTime = System.currentTimeMillis();
 		float sec = (lEndTime - lStartTime) / 1000F;
@@ -39,6 +40,26 @@ public class LambdaTest implements TestInf {
 		
 		return 1;
 		
+	}
+	
+	private int test2() {
+		
+		List<String> list = Arrays.asList("A", "B", "C");
+		list.forEach(this::printLowerCase);
+		list.forEach(LambdaTest::printUpperCase);
+		list.forEach(String::toLowerCase);
+		list.forEach(String::new);
+		
+		return 1;
+		
+	}
+	
+	public void printLowerCase(String s) {
+		log.info(s.toLowerCase());
+	}
+	
+	public static void printUpperCase(String s) {
+		log.info(s.toUpperCase());
 	}
 	
 }
