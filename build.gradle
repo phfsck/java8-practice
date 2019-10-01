@@ -2,6 +2,8 @@ plugins {
 	id 'org.springframework.boot' version '2.1.8.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id 'eclipse'
+	id 'base'
 }
 
 group = 'com.jarv.practice'
@@ -13,6 +15,23 @@ repositories {
 }
 
 dependencies {
+  	implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
+  	implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
+	implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
+	annotationProcessor 'org.projectlombok:lombok:1.18.10'
+  	implementation 'org.apache.logging.log4j:log4j-jul'
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+configurations {
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+}
+
+clean {
+	delete "${rootDir}/logs"
+	delete "${rootDir}/bin"
 }
