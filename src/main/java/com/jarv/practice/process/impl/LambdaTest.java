@@ -17,6 +17,7 @@ public class LambdaTest implements TestInf {
 	@Override
 	public void run() {
 
+		// Test comment
 		log.info("Start LambdaTest.run()...");
 		long lStartTime = System.currentTimeMillis();
 		
